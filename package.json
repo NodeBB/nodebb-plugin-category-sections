@@ -1,0 +1,26 @@
+{
+  "name": "nodebb-plugin-category-sections",
+  "version": "0.1.1",
+  "description": "Category Sections for NodeBB",
+  "main": "library.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psychobunny/nodebb-plugin-category-sections"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "category",
+    "sections",
+    "forum"
+  ],
+  "author": {
+    "name": "psychobunny",
+    "email": "psycho.bunny@hotmail.com"
+  },
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/psychobunny/nodebb-plugin-category-sections/issues"
+  },
+  "readmeFilename": "README.md"
+}

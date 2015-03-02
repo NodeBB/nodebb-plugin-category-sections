@@ -1,0 +1,28 @@
+{
+	"id": "nodebb-plugin-category-sections",
+	"name": "Category Sections for NodeBB",
+	"description": "This plugin allows you to organize the categories on your homepage into individual sections.",
+	"url": "https://github.com/NodeBB/nodebb-plugin-category-sections",
+	"library": "./library.js",
+	"hooks": [
+		{
+			"hook": "static:app.load", "method": "init"
+		},
+		{
+			"hook": "filter:admin.header.build", "method": "addAdminNavigation"
+		},
+		{
+			"hook": "action:homepage.get:categories", "method": "getCategories"
+		}
+	],
+	"staticDirs": {
+		"static": "./static"
+	},
+	"less": [
+		"static/style.less"
+	],
+	"scripts": [
+		"static/lib/admin/sections.js"
+	],
+	"templates": "static/templates"
+}
