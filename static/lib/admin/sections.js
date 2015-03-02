@@ -52,8 +52,6 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 			});
 		});
 
-		console.log(sections);
-
 		socket.emit('plugins.category-sections.save', sections, function(err) {
 			if (err) {
 				app.alertError(err.message);
