@@ -9,6 +9,7 @@
 						<label for="name">Section Name
 							<input type="text" class="form-control" name="name" value="{sections.name}" />
 						</label>
+						<button class="btn btn-danger delete pull-right">Delete</button>
 						<hr />
 						<div class="section-sortable">
 							<!-- BEGIN categories -->
@@ -27,7 +28,7 @@
 	</div>
 
 	<div class="col-lg-4">
-		<div class="panel panel-default">
+		<div class="panel panel-default" id="uncategorized">
 			<div class="panel-heading">Uncategorized</div>
 			<div class="panel-body">
 				<form role="form">

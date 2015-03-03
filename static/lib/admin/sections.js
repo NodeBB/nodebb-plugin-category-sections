@@ -8,6 +8,7 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 		activateUI();
 		$('#new').on('click', newSection);
 		$('#save').on('click', saveSections);
+		$('.delete').on('click', deleteSection);
 	};
 
 	function newSection() {
@@ -15,6 +16,16 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 			$('.sections').append($(li));
 			activateUI();
 		});
+	}
+
+	function deleteSection(ev) {
+		var parent = $(this).parents('form'),
+			categories = parent.find('.category-selector').appendTo($('#uncategorized').find('.section-sortable'));
+
+		parent.remove();
+
+		ev.preventDefault();
+		return false;
 	}
 
 	function activateUI() {
