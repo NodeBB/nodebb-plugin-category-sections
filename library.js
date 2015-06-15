@@ -129,6 +129,7 @@ function modifyCategoryTpl(callback) {
 
 		if (!tpl.match('<!-- BEGIN sections -->')) {
 			tpl = tpl.replace(block, '<!-- BEGIN sections --><div class="col-xs-12"><h1>{sections.name}</h1>' + block + '</div><div class="clearfix"></div><!-- END sections -->');
+			tpl = tpl.replace(/\{categories/g, '{sections.categories')
 		}
 
 		fs.writeFile(tplPath, tpl, callback);
