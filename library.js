@@ -26,8 +26,7 @@ plugin.init = function(params, callback) {
 		});
 	};
 
-	emitter.on('templates:compiled', modifyCategoryTpl);
-	callback();
+	modifyCategoryTpl(callback);
 };
 
 plugin.addAdminNavigation = function(header, callback) {
@@ -115,13 +114,16 @@ function getCategories(params, callback) {
 	controllers.categories.list(req, override, params.next);
 }
 
-function modifyCategoryTpl() {
+function modifyCategoryTpl(callback) {
 	var fs = require('fs'),
 		path = require('path'),
 		nconf = module.parent.require('nconf'),
 		tplPath = path.join(nconf.get('base_dir'), 'public/templates/categories.tpl');
 
 	fs.readFile(tplPath, function(err, tpl) {
+		if (err) {
+			return callback(err);
+		}
 		tpl = tpl.toString();
 		var block = templates.getBlock(tpl, 'categories');
 
@@ -129,7 +131,7 @@ function modifyCategoryTpl() {
 			tpl = tpl.replace(block, '<!-- BEGIN sections --><div class="col-xs-12"><h1>{sections.name}</h1>' + block + '</div><div class="clearfix"></div><!-- END sections -->');
 		}
 
-		fs.writeFileSync(tplPath, tpl);
+		fs.writeFile(tplPath, tpl, callbacl);
 	});
 }
 
