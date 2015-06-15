@@ -3,25 +3,25 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Category Sections</div>
 			<div class="panel-body sections">
-				<!-- BEGIN sections -->
+				<!-- BEGIN data.sections -->
 				<form role="form">
 					<div class="well section">
 						<label for="name">Section Name
-							<input type="text" class="form-control" name="name" value="{sections.name}" />
+							<input type="text" class="form-control" name="name" value="{data.sections.name}" />
 						</label>
 						<button class="btn btn-danger delete pull-right">Delete</button>
 						<hr />
 						<div class="section-sortable">
 							<!-- BEGIN categories -->
 							<div class="panel panel-body category-selector">
-								<h3>{categories.name} <br /><small>{categories.description}</small></h3>
-								<input type="hidden" name="cid" value="{categories.cid}" />
+								<h3>{data.sections.categories.name} <br /><small>{data.sections.categories.description}</small></h3>
+								<input type="hidden" name="cid" value="{data.sections.categories.cid}" />
 							</div>
 							<!-- END categories -->
 						</div>
 					</div>
 				</form>
-				<!-- END sections -->
+				<!-- END data.sections -->
 			</div>
 		</div>
 		<div class="spacer"></div>
@@ -33,12 +33,12 @@
 			<div class="panel-body">
 				<form role="form">
 					<div class="section-sortable">
-						<!-- BEGIN uncategorized -->
+						<!-- BEGIN data.uncategorized -->
 						<div class="panel panel-body category-selector">
-							<h3>{uncategorized.name} <br /><small>{uncategorized.description}</small></h3>
-							<input type="hidden" name="cid" value="{uncategorized.cid}" />
+							<h3>{data.uncategorized.name} <br /><small>{data.uncategorized.description}</small></h3>
+							<input type="hidden" name="cid" value="{data.uncategorized.cid}" />
 						</div>
-						<!-- END uncategorized -->
+						<!-- END data.uncategorized -->
 					</div>
 				</form>
 			</div>
