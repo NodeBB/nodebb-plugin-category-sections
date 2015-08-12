@@ -13,7 +13,7 @@ plugin.init = function(params, callback) {
 		middleware = params.middleware;
 
 	controllers = params.controllers;
-		
+
 	app.get('/admin/plugins/category-sections', middleware.admin.buildHeader, renderAdmin);
 	app.get('/api/admin/plugins/category-sections', renderAdmin);
 
@@ -118,7 +118,8 @@ function modifyCategoryTpl(callback) {
 	var fs = require('fs'),
 		path = require('path'),
 		nconf = module.parent.require('nconf'),
-		tplPath = path.join(nconf.get('base_dir'), 'public/templates/categories.tpl');
+		tplPath = path.join(nconf.get('base_dir'), 'public/templates/categories.tpl'),
+		theme = module.parent.require("./meta").config["theme:id"];
 
 	fs.readFile(tplPath, function(err, tpl) {
 		if (err) {
@@ -128,7 +129,14 @@ function modifyCategoryTpl(callback) {
 		var block = templates.getBlock(tpl, 'categories');
 
 		if (!tpl.match('<!-- BEGIN sections -->')) {
-			tpl = tpl.replace(block, '<!-- BEGIN sections --><div class="col-xs-12"><h1>{sections.name}</h1>' + block + '</div><div class="clearfix"></div><!-- END sections -->');
+			if (theme === "nodebb-theme-persona") {
+				tpl = tpl.replace('<ul class="categories"', '<ul class="sections"');
+				tpl = tpl.replace(block, '<!-- BEGIN sections --><li class="row clearfix section"><h3>{sections.name}</h3> <ul class="categories">' + block + '</ul></li><!-- END sections -->');
+			} else {
+				tpl = tpl.replace(block, '<!-- BEGIN sections --><div class="col-xs-12"><h1>{sections.name}</h1>' + block + '</div><div class="clearfix"></div><!-- END sections -->');
+			}
+
+			tpl = tpl.replace(block, '<!-- BEGIN sections --><div class="col-xs-12 section"><h1>{sections.name}</h1>' + block + '</div><div class="clearfix"></div><!-- END sections -->');
 			tpl = tpl.replace(/\{categories/g, '{sections.categories');
 			tpl = tpl.replace(/IF categories/g, 'IF sections.categories');
 			tpl = tpl.replace(/<!-- IF !disableMasonry -->masonry<!-- ENDIF !disableMasonry -->/, '');
