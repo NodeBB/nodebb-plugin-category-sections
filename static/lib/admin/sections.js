@@ -12,7 +12,7 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 	};
 
 	function newSection() {
-		templates.parse('admin/plugins/category-sections', 'sections', {sections: [{name: "Untitled Section", categories: []}]}, function(li) {
+		templates.parse('admin/plugins/category-sections', 'data.sections', {'data.sections': [{name: "Untitled Section", categories: []}]}, function(li) {
 			$('.sections').append($(li));
 			activateUI();
 		});
