@@ -46,7 +46,7 @@ plugin.getCategories = function(params, callback) {
 };
 
 function saveSections(data, callback) {
-	db.set('plugins:category-sections:sections', JSON.stringify(data), callback);
+	db.set('plugins:category-sections:sections', data, callback);
 }
 
 function renderAdmin(req, res, next) {
@@ -65,7 +65,11 @@ function getCategories(params, callback) {
 				return callback(err);
 			}
 
-			sections = (sections && sections.length) ? JSON.parse(sections) : [];
+			sections = (sections && sections.length) ? sections : [];
+			
+			// for legacy
+			sections = (typeof sections === 'string') ? JSON.parse(sections) : sections;
+			
 
 			var categories = data.categories,
 				sectioned = [];
