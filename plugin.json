@@ -21,7 +21,7 @@
 	"less": [
 		"static/style.less"
 	],
-	"scripts": [
+	"acpScripts": [
 		"static/lib/admin/sections.js"
 	],
 	"templates": "static/templates"
