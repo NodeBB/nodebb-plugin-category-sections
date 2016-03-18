@@ -62,6 +62,8 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 				cids: cids
 			});
 		});
+		
+		sections = JSON.stringify(sections);
 
 		socket.emit('plugins.category-sections.save', sections, function(err) {
 			if (err) {
