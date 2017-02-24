@@ -5,10 +5,12 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 	var admin = {};
 
 	admin.init = function() {
-		activateUI();
-		$('#new').on('click', newSection);
-		$('#save').on('click', saveSections);
-		$('.delete').on('click', deleteSection);
+		$(document).ready(function() {
+			activateUI();
+			$('#new').on('click', newSection);
+			$('#save').on('click', saveSections);
+			$('.delete').on('click', deleteSection);
+		});
 	};
 
 	function newSection() {

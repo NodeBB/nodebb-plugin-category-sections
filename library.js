@@ -122,7 +122,7 @@ function modifyCategoryTpl(callback) {
 	var fs = require('fs'),
 		path = require('path'),
 		nconf = module.parent.require('nconf'),
-		tplPath = path.join(nconf.get('base_dir'), 'public/templates/categories.tpl'),
+		tplPath = path.join(nconf.get('base_dir'), 'build/public/templates/categories.tpl'),
 		theme = module.parent.require("./meta").config["theme:id"];
 
 	fs.readFile(tplPath, function(err, tpl) {
