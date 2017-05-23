@@ -6,7 +6,7 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 
 	admin.init = function() {
 		$(document).ready(function() {
-			activateUI();
+			app.loadJQueryUI(activateUI);
 			$('#new').on('click', newSection);
 			$('#save').on('click', saveSections);
 			$('.delete').on('click', deleteSection);
@@ -16,7 +16,7 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 	function newSection() {
 		templates.parse('admin/plugins/category-sections', 'data.sections', {'data.sections': [{name: "Untitled Section", categories: []}]}, function(li) {
 			$('.sections').append($(li));
-			activateUI();
+			app.loadJQueryUI(activateUI);
 		});
 	}
 
@@ -37,15 +37,6 @@ define('admin/plugins/category-sections', ['settings'], function(settings) {
 			})
 			.droppable({
 				accept: $('.category-selector')
-			});
-
-		$('.category-selector')
-			.draggable({
-				connectToSortable: '.section-sortable',
-				distance: 10,
-				helper: function(ev, ui) {
-					$(ev.target).removeAttr('style');
-				}
 			});
 	}
 
