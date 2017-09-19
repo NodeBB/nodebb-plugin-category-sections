@@ -2,7 +2,7 @@
 
 var plugin = {},
 	emitter = module.parent.require('./emitter'),
-	templates = module.parent.require('templates.js'),
+	templates = require('templates.js'),
 	SocketPlugins = module.parent.require('./socket.io/plugins'),
 	user = module.parent.require('./user'),
 	db = module.parent.require('./database'),
@@ -137,14 +137,15 @@ function modifyCategoryTpl(callback) {
 				tpl = tpl.replace('<ul class="categories"', '<ul class="sections"');
 				tpl = tpl.replace(block, '<!-- BEGIN sections --><li class="row clearfix section"><h3>{sections.name}</h3> <ul class="categories">' + block + '</ul></li><!-- END sections -->');
 			} else {
-				tpl = tpl.replace(block, '<!-- BEGIN sections --><div class="col-xs-12"><h1>{sections.name}</h1>' + block + '</div><div class="clearfix"></div><!-- END sections -->');
+				tpl = tpl.replace('<!-- BEGIN categories -->', '<!-- BEGIN sections --><div class="col-xs-12"><h1>{sections.name}</h1><!-- BEGIN categories -->');
+				tpl = tpl.replace('<!-- END categories -->', '<!-- END categories --></div><div class="clearfix"></div><!-- END sections -->');
 			}
 
 			tpl = tpl.replace(/\{categories/g, '{sections.categories');
 			tpl = tpl.replace(/IF categories/g, 'IF sections.categories');
 			tpl = tpl.replace(/<!-- IF !disableMasonry -->masonry<!-- ENDIF !disableMasonry -->/, '');
 		}
-
+		
 		fs.writeFile(tplPath, tpl, callback);
 	});
 }

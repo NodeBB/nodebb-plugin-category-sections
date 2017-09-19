@@ -25,5 +25,9 @@
   "readmeFilename": "README.md",
   "nbbpm": {
     "compatibility": "^1.4.4"
+  },
+  "dependencies": {
+    "benchpressjs": "^1.0.4",
+    "templates.js": "^0.3.11"
   }
 }
