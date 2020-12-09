@@ -3,7 +3,7 @@
 https://github.com/NodeBB/nodebb-theme-persona/commit/2b619db7466c2dd1e61f3fbd2f2e5afc56a2bd7e
 https://github.com/NodeBB/nodebb-theme-lavender/commit/c1821bb2d8493b9377c2750927ead21798b0eff6
 
-Use `isSection` in your custom theme to emulate this behavior as well.
+Use `isSection` in your custom theme to emulate this behavior as well. This option is available now by default in core in ACP -> Manage -> Categories -> X Category -> "Treat this category as a section".
 
 
 # Category Sections for NodeBB 
