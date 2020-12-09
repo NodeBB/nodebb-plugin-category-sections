@@ -1,3 +1,11 @@
+### This plugin has been deprecated now that this functionality exists in core
+
+https://github.com/NodeBB/nodebb-theme-persona/commit/2b619db7466c2dd1e61f3fbd2f2e5afc56a2bd7e
+https://github.com/NodeBB/nodebb-theme-lavender/commit/c1821bb2d8493b9377c2750927ead21798b0eff6
+
+Use `isSection` in your custom theme to emulate this behavior as well.
+
+
 # Category Sections for NodeBB 
 
 This plugin allows you to organize the categories on your homepage into individual sections.
